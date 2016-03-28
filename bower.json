@@ -1,0 +1,15 @@
+{
+  "name": "cmsc128-ay2015-16-assign003-firebase",
+  "description": "A CMSC128 assignment, creating a simple recipe organizer that uses Firebase technology.",
+  "version": "0.0.0",
+  "homepage": "https://github.com/keanpaderes/cmsc128-ay2015-16-assign003-firebase",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "~1.4.0",
+    "angular-route": "~1.4.0",
+    "angular-loader": "~1.4.0",
+    "angular-mocks": "~1.4.0",
+    "html5-boilerplate": "~5.2.0"
+  }
+}
