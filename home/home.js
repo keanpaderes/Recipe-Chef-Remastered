@@ -11,7 +11,6 @@ angular.module('myApp.home', ['ngRoute', 'firebase'])
 }])
 
 // Home controller
-<<<<<<< HEAD
 .controller('HomeCtrl', ['$scope', '$firebaseArray', '$firebaseObject', function($scope, $firebaseArray, $firebaseObject) {
     //References for Firebase db
     var categoryRefs = new Firebase("https://boiling-fire-2809.firebaseio.com/categories");
@@ -28,13 +27,6 @@ angular.module('myApp.home', ['ngRoute', 'firebase'])
     $scope.hasInfo = false;
 
     //Array of data from db.
-=======
-.controller('HomeCtrl', ['$scope', '$firebaseArray', function($scope, $firebaseArray) {
-    var categoryRefs = new Firebase("https://boiling-fire-2809.firebaseio.com/categories");
-    var recipeRefs = new Firebase("https://boiling-fire-2809.firebaseio.com/recipes");
-    $scope.callFormPanel = true;
-    $scope.formPanel = true;
->>>>>>> 359c41459577baf557748a00ffaf63c2156e5a8f
     $scope.categories = $firebaseArray(categoryRefs);
     $scope.recipes = $firebaseArray(recipeRefs);
 
@@ -45,58 +37,53 @@ angular.module('myApp.home', ['ngRoute', 'firebase'])
     }
 
     $scope.showForm = function() {
+        //Shows form panel
         $scope.formPanel = !$scope.formPanel
         $scope.callFormPanel = !$scope.callFormPanel
     }
 
     $scope.addCategory = function() {
-<<<<<<< HEAD
-      if($scope.newCategory.length == 0){
+      //Adds into the categories
+      if($scope.newCategory == null){
+        //Catcher if category field is empty.
         $scope.isAddCatError = true;
       }else{
-=======
->>>>>>> 359c41459577baf557748a00ffaf63c2156e5a8f
         $scope.categories.$add({
           value: $scope.newCategory
         });
         $scope.recipeCategory = "";
         $scope.newCategory = "";
-<<<<<<< HEAD
         $scope.isAddCatError = false;
       }
     }
 
     $scope.addRecipe = function() {
-      var isFormNotValid = $scope.recipeCategory == null || $scope.recipeInfo == null || $scope.recipeInfo == null;
+      //Adds a recipe into the firebase array.
+      var isFormNotValid = $scope.recipeCategory == null || $scope.recipeName == null || $scope.recipeInfo == null; //Boolean expression for checking if forms are empty.
       if(isFormNotValid){
+        //If forms are empty, shows error in forms.
         $scope.hasName = true;
         $scope.hasCat = true;
         $scope.hasInfo = true;
       }else{
-=======
-    }
-
-    $scope.addRecipe = function() {
->>>>>>> 359c41459577baf557748a00ffaf63c2156e5a8f
         $scope.recipes.$add({
+          //Adds into the firebase array.
           recipeCategory: $scope.recipeCategory,
           recipeId: $scope.recipes.length,
           recipeInfo: $scope.recipeInfo,
           recipeName: $scope.recipeName
         });
+        //Reinitializes the forms into empty and hides the forms.
         $scope.recipeCategory = "";
         $scope.recipeInfo = "";
         $scope.recipeName = "";
         $scope.formPanel = !$scope.formPanel
         $scope.callFormPanel = !$scope.callFormPanel
-<<<<<<< HEAD
       }
     }
 
     $scope.removeRecipe = function(recipe) {
+      //Removes a recipe by removing it from the firebase array.
       $scope.recipes.$remove(recipe);
-      //$scope.categories.$remove(recipe);
-=======
->>>>>>> 359c41459577baf557748a00ffaf63c2156e5a8f
     }
 }]);
