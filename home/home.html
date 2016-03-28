@@ -8,12 +8,21 @@
     <div class="row">
         <div class="col-sm-12 col-md-12">
           <div ng-repeat="recipe in recipes" class="col-sm-4 col-md-4" id="{{recipe.recipeId}}">
+<<<<<<< HEAD
             <div class="panel panel-primary">
               <div class="panel-heading">
                 <h2 class="panel-title"><button type="button" class="btn btn-danger btn-circle" ng-click="removeRecipe(recipe)"><span class="glyphicon glyphicon-remove" style="font-size:10px;"></span></button>&nbsp;&nbsp;{{recipe.recipeName}}</h2>
               </div>
               <div class="panel-body">
                 <h5><i>Category:</i> &nbsp;&nbsp;&nbsp;&nbsp; {{recipe.recipeCategory}}</h5>
+=======
+            <div class="panel panel-success">
+              <div class="panel-heading">
+                <h2 class="panel-title">{{recipe.recipeName}}</h2>
+              </div>
+              <div class="panel-body">
+                <h5><i>Category:</i> &nbsp;&nbsp;&nbsp;&nbsp; {{recipe.recipeCategory}} </h5>
+>>>>>>> 359c41459577baf557748a00ffaf63c2156e5a8f
                 <h5><i>Info:</i></h5><div class="well well-lg" style="height:200px;overflow-y:scroll;white-space: pre;">{{recipe.recipeInfo}}</div>
               </div>
             </div>
@@ -29,11 +38,16 @@
         </div>
     </div>
     <form name="recipeForm" role="form">
+<<<<<<< HEAD
       <div class="row animate-show" ng-hide="formPanel" style="border-top: 1px solid #eee">
+=======
+      <div class="row animate-show" ng-hide="formPanel">
+>>>>>>> 359c41459577baf557748a00ffaf63c2156e5a8f
           <div class="col-sm-11 col-sm-offset-1 col-md-11 col-md-offset-1">
               <div class="row">
                   <h2>Add Recipe</h2>
                   <div class="col-sm-9 col-md-8">
+<<<<<<< HEAD
                       <div class="form-group" ng-class="{ 'has-error' : hasName }">
                           <label>Recipe Name</label>
                           <input ng-model="recipeName" type="text" name="name" class="form-control">
@@ -44,15 +58,32 @@
                       <div class="form-group" ng-class="{ 'has-error' : hasCat }">
                           <label>Recipe Category</label>
                           <select class="form-control" name="cat" ng-model="recipeCategory">
+=======
+                      <div class="form-group" ng-class="{ 'has-warning' : recipeForm.name.$error.required }">
+                          <label>Recipe Name</label>
+                          <input ng-model="recipeName" type="text" name="name" class="form-control" required>
+                          <p class="help-block" ng-show="recipeForm.name.$error.required">You must specify a name.</p>
+                      </div>
+                  </div>
+                  <div class="col-sm-3 col-md-2">
+                      <div class="form-group" ng-class="{ 'has-warning' : recipeForm.cat.$error.required }">
+                          <label>Recipe Category</label>
+                          <select class="form-control" name="cat" ng-model="recipeCategory" required>
+>>>>>>> 359c41459577baf557748a00ffaf63c2156e5a8f
                             <option value="" selected="" hidden>Choose a category...</option>
                             <option ng-repeat="category in categories" value="{{category.value}}">{{category.value}}</option>
                             <option value="add">Add a category...</option>
                           </select>
+<<<<<<< HEAD
                           <p class="help-block" ng-show="hasCat">You must choose a category.</p>
+=======
+                          <p class="help-block" ng-show="recipeForm.cat.$error.required">You must choose a category.</p>
+>>>>>>> 359c41459577baf557748a00ffaf63c2156e5a8f
                       </div>
                   </div>
                   <form name="categoryForm" role="form">
                       <div class="col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4" ng-show="recipeCategory == 'add'">
+<<<<<<< HEAD
                         <div class="form-group" ng-class="{ 'has-error' : isAddCatError }">
                             <input type="text" name="newCat" class="form-control" ng-model="newCategory">
                             <p class="help-block" ng-show="isAddCatError">You must enter a new category.</p>
@@ -67,6 +98,22 @@
                           <label>Recipe Info</label>
                           <textarea ng-model="recipeInfo" name="info" class="form-control" rows="3" required></textarea>
                           <p class="help-block" ng-show="hasInfo">You must give an information about the recipe.</p>
+=======
+                        <div class="form-group" ng-class="{ 'has-warning' : !newCategory.length }">
+                            <input type="text" name="newCat" class="form-control" ng-model="newCategory">
+                            <p class="help-block" ng-show="!newCategory.length">You must enter a new category.</p>
+                        </div>
+                      </div>
+                      <div class="col-sm-4 col-md-4" ng-show="recipeCategory == 'add'">
+                        <button type="button" class="btn btn-primary" ng-click="addCategory()" ng-disabled="!newCategory.length">Add Category</button>
+                      </div>
+                  </form>
+                  <div class="col-sm-12 col-md-10">
+                      <div class="form-group" ng-class="{ 'has-warning' : recipeForm.cat.$error.required }">
+                          <label>Recipe Info</label>
+                          <textarea ng-model="recipeInfo" name="info" class="form-control" rows="3" required></textarea>
+                          <p class="help-block" ng-show="recipeForm.info.$error.required">You must give an information about the recipe.</p>
+>>>>>>> 359c41459577baf557748a00ffaf63c2156e5a8f
                       </div>
                   </div>
               </div>
@@ -75,7 +122,11 @@
                       <button type="button" class="btn btn-danger btn-circle btn-xl" ng-click="cancelRecipe()">
                           <span class="glyphicon glyphicon-remove" style="font-size:40px;"></span>
                       </button>
+<<<<<<< HEAD
                       <button type="button" class="btn btn-success btn-circle btn-xl" ng-click="addRecipe()">
+=======
+                      <button type="button" class="btn btn-success btn-circle btn-xl" ng-click="addRecipe()" ng-disabled="recipeForm.name.$error.required || recipeForm.cat.$error.required || recipeForm.info.$error.required">
+>>>>>>> 359c41459577baf557748a00ffaf63c2156e5a8f
                           <span class="glyphicon glyphicon-ok" style="font-size:40px;"></span>
                       </button>
                   </div>
