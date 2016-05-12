@@ -1,4 +1,4 @@
-# cmsc128-ay2015-16-assign003-firebase
+# Recipe Chef Remastered!
 A CMSC128 assignment, creating a simple recipe organizer that uses Firebase technology.
 
 ## Introduction
