@@ -4,7 +4,6 @@
 //ngRoute allows routing
 angular.module('myApp', [
   'ngRoute',
-  'firebase',
   'myApp.home'
 ]).
 config(['$routeProvider', function($routeProvider) {
